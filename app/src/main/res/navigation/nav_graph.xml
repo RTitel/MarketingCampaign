@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.marketingcampaign.view.main.MainFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/main_fragment">
+        <action
+            android:id="@+id/action_mainFragment_to_channelsFragment"
+            app:destination="@id/channelsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/channelsFragment"
+        android:name="com.example.marketingcampaign.view.channel.ChannelsFragment"
+        android:label="Channels"
+        tools:layout="@layout/channels_fragment" >
+        <argument
+            android:name="channels"
+            app:argType="integer[]" />
+        <action
+            app:popUpTo="@+id/channelsFragment"
+            app:popUpToInclusive="false"
+            android:id="@+id/action_channelsFragment_to_monthlyFeeFragment"
+            app:destination="@id/monthlyFeeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/monthlyFeeFragment"
+        android:name="com.example.marketingcampaign.view.monthlyFee.MonthlyFeeFragment"
+        android:label="Monthly Fee" >
+        <argument
+            android:name="channel"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_monthlyFeeFragment_to_reviewMonthlyFeeFragment"
+            app:destination="@id/reviewMonthlyFeeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/reviewMonthlyFeeFragment"
+        app:popUpTo="@id/mainFragment"
+        app:popUpToInclusive="true"
+        android:name="com.example.marketingcampaign.view.reviewMonthlyFee.ReviewMonthlyFeeFragment"
+        android:label="Your monthly fee" />
+</navigation>
